@@ -40,10 +40,13 @@ public class HotelServiceImpl implements HotelService{
 		{
 		
 			List<Booking> bookings=bookingRepository.findAllByHotelIdAndBookingCancelFlagAndCheckInLessThanEqualAndCheckOutGreaterThanEqual(hotels.get(i).getId(),0,checkOut,checkIn);
-			
+			//testing
+			//System.out.println(bookings.size());
 			int r=hotels.get(i).getTotalRooms()-bookings.size();
 			hotels.get(i).setAvailableRooms(r);
 		}
+		//for testing
+		//System.out.println(hotels.get(0).getAvailableRooms());
 		for(int i=0;i<hotels.size();i++)
 		{
 			if(hotels.get(i).getAvailableRooms()>0)

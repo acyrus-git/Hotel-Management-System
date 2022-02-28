@@ -34,10 +34,18 @@ public class Booking {
 	private int bookingCancelFlag;
 	
 	
-	public Booking() {
-		}
+	
 	
 	public Booking(long id, long hotelId, Date checkIn, Date checkOut, int bookingCancelFlag) {
+		super();
+		this.id = id;
+		this.hotelId = hotelId;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.bookingCancelFlag = bookingCancelFlag;
+	}
+	public Booking(long id2, long hotelId2, java.util.Date date, java.util.Date date2, int bookingCancelFlag2) {
+		// TODO Auto-generated constructor stub
 		super();
 		this.id = id;
 		this.hotelId = hotelId;
