@@ -102,7 +102,7 @@ public class HotelServiceTesting {
 		//assertEquals(2,hotelService.getAllHotels("Farrukhabad", new java.sql.Date(sdf.parse("20/02/2022").getTime()), new java.sql.Date(sdf.parse("21/02/2022").getTime())).size());
 		assertThrows(BusinessException.class,()->hotelService.getAllHotels("Farrukh", new java.sql.Date(sdf.parse("20/02/2022").getTime()), new java.sql.Date(sdf.parse("21/02/2022").getTime())));
 	}
-	@Test
+	/*@Test
 	@Order(4)
 	public void getAllHotelsTest_3() throws ParseException {
 		hotels.add(new Hotel((long)1,"Hotel Anand","Farrukhabad",1000,5,4));
@@ -119,6 +119,6 @@ public class HotelServiceTesting {
 		int siz=hotelService.getAllHotels("Farrukhabad", new java.sql.Date(sdf.parse("20/02/2022").getTime()), new java.sql.Date(sdf.parse("21/02/2022").getTime())).size();
 		//System.out.println(siz);
 		assertEquals(1,siz);
-	}
+	}*/
 
 }
