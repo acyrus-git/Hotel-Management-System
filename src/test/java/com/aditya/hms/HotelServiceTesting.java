@@ -118,7 +118,7 @@ public class HotelServiceTesting {
 		when(bookingRepository.findAllByHotelIdAndBookingCancelFlagAndCheckInLessThanEqualAndCheckOutGreaterThanEqual(1, 0,new java.sql.Date(sdf.parse("20/02/2022").getTime()) , new java.sql.Date(sdf.parse("21/02/2022").getTime()))).thenReturn(bookings);
 		int siz=hotelService.getAllHotels("Farrukhabad", new java.sql.Date(sdf.parse("20/02/2022").getTime()), new java.sql.Date(sdf.parse("21/02/2022").getTime())).size();
 		//System.out.println(siz);
-		assertEquals(0,siz);
+		assertEquals(1,siz);
 	}
 
 }
