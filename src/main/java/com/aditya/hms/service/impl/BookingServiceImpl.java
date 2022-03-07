@@ -62,8 +62,9 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public String cancelbooking(long id) {
+
 		Booking booking=bookingRepository.findById(id).orElseThrow(()->new BusinessException("610","No booking present for given id"));
-		
+
 		
 		if(booking.getBookingCancelFlag()==1)
 			throw new BusinessException("611","Booking already cancelled for the given id");
@@ -72,7 +73,9 @@ public class BookingServiceImpl implements BookingService {
 			String s="Booking cancelled with bookingid "+booking.getId();
 			lock.lock();
 			try {
+				System.out.println(booking.getId());
 			bookingRepository.save(booking);
+
 			}
 			catch(Exception e)
 			{
@@ -85,6 +88,18 @@ public class BookingServiceImpl implements BookingService {
 			}
 			return s;
 			}
+
+
+
+	@Override
+	public List<Booking> getAllBookings(long id) {
+		// TODO Auto-generated method stub
+		
+		List<Booking> bookings=bookingRepository.findAllByHotelId(id);
+		return bookings;
+	}
+	
+	
 
 	
 }

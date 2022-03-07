@@ -33,18 +33,21 @@ public class HotelServiceImpl implements HotelService{
 		// TODO Auto-generated method stub
 		List<Hotel> availableHotels=new ArrayList<>();
 		try {
+
 		List<Hotel> hotels=getHotelsByCity(city);
-		
-		
+
+
 		for(int i=0;i<hotels.size();i++)
 		{
+			
 		
 			List<Booking> bookings=bookingRepository.findAllByHotelIdAndBookingCancelFlagAndCheckInLessThanEqualAndCheckOutGreaterThanEqual(hotels.get(i).getId(),0,checkOut,checkIn);
-			//testing
+						//testing
 			//System.out.println(bookings.size());
 			int r=hotels.get(i).getTotalRooms()-bookings.size();
 			hotels.get(i).setAvailableRooms(r);
 		}
+
 		//for testing
 		//System.out.println(hotels.get(0).getAvailableRooms());
 		for(int i=0;i<hotels.size();i++)

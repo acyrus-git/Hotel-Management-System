@@ -20,22 +20,25 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	@NotEmpty
+
 	private long hotelId;
-	@NotEmpty
+
 	@JsonFormat(pattern="dd/MM/yyyy")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date checkIn;
-	@NotEmpty
+
+	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date checkOut;
-	@NotEmpty
+
 	private int bookingCancelFlag;
 	
 	
 	
-	
+	public Booking() {
+		
+	}
 	public Booking(long id, long hotelId, Date checkIn, Date checkOut, int bookingCancelFlag) {
 		super();
 		this.id = id;
@@ -44,7 +47,7 @@ public class Booking {
 		this.checkOut = checkOut;
 		this.bookingCancelFlag = bookingCancelFlag;
 	}
-	public Booking(long id2, long hotelId2, java.util.Date date, java.util.Date date2, int bookingCancelFlag2) {
+	/*public Booking(long id2, long hotelId2, java.util.Date date, java.util.Date date2, int bookingCancelFlag2) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.id = id;
@@ -52,7 +55,7 @@ public class Booking {
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.bookingCancelFlag = bookingCancelFlag;
-	}
+	}*/
 	public long getId() {
 		return id;
 	}

@@ -45,7 +45,7 @@ public class HotelController {
 	public ResponseEntity<?> getHotelByCity(@PathVariable String city){
 		
 		
-		return new ResponseEntity<List>(hotelService.getHotelsByCity(city),HttpStatus.CREATED);
+		return new ResponseEntity<List<Hotel>>(hotelService.getHotelsByCity(city),HttpStatus.OK);
 	} 
 	
 	@GetMapping("/get-hotel")
@@ -54,7 +54,7 @@ public class HotelController {
 			@RequestParam(name="checkOut", required=false) @DateTimeFormat(pattern="dd/MM/yyyy")Date checkOut){
 		
 		try {
-		return new ResponseEntity<List>(hotelService.getAllHotels(city, checkIn, checkOut),HttpStatus.OK);
+		return new ResponseEntity<List<Hotel>>(hotelService.getAllHotels(city, checkIn, checkOut),HttpStatus.OK);
 		}
 		catch(BusinessException e)
 		{

@@ -1,5 +1,7 @@
 package com.aditya.hms.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +31,7 @@ public class BookingController {
 	Logger logger=LoggerFactory.getLogger(BookingServiceImpl.class);
 	
 	@PostMapping("/add-booking")
-	public ResponseEntity<?> saveBooking(@RequestBody @Valid Booking booking){
+	public ResponseEntity<?> saveBooking(@RequestBody /*@Valid*/ Booking booking){
 		
 		logger.info("Recieved a request to save booking with id "+ booking.getId()+ "for hotel with hotel id "+booking.getHotelId());
 		
@@ -46,12 +49,18 @@ public class BookingController {
 			return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
 		}
 	}
+	@GetMapping("/get-bookings/{id}")
+	public ResponseEntity<?> getAllBookings(@PathVariable long id)
+	{
+		return new ResponseEntity<List<Booking>>(bookingService.getAllBookings(id),HttpStatus.OK);
+	}
 	
 	@DeleteMapping("/cancel-booking/{id}")
 	public ResponseEntity<?> cancelBooking(@PathVariable long id){
-		
-		logger.info("Recieved a request to save booking with id "+ id);
+
+		logger.info("Recieved a request to cancel booking with id "+ id);
 		try {
+			System.out.println("yo");
 		return new ResponseEntity<String>(bookingService.cancelbooking(id),HttpStatus.OK);
 		}
 		catch(BusinessException e)

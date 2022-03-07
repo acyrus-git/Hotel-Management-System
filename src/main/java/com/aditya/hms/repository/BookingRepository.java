@@ -13,4 +13,5 @@ public interface BookingRepository extends JpaRepository<Booking,Long> {
 
 	List<Booking> findAllByHotelIdAndBookingCancelFlagAndCheckInLessThanEqualAndCheckOutGreaterThanEqual(long id, int i,
 			Date checkOut, Date checkIn);
-}
+	List<Booking> findAllByHotelId(long id);
+} 
